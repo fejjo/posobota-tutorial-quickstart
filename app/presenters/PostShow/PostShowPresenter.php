@@ -3,17 +3,23 @@
 namespace App\Presenters;
 
 use App\Components\CommentFormControl;
+use App\Components\CommentFormControlFactory;
 use Nette;
 
 class PostShowPresenter extends BasePresenter
 {
 	/** @var Nette\Database\Context */
 	private $database;
+	/**
+	 * @var CommentFormControlFactory
+	 */
+	private $commentFormControlFactory;
 
 
-	public function __construct(Nette\Database\Context $database)
+	public function __construct(Nette\Database\Context $database, CommentFormControlFactory $commentFormControlFactory)
 	{
 		$this->database = $database;
+		$this->commentFormControlFactory = $commentFormControlFactory;
 	}
 
 
@@ -35,7 +41,9 @@ class PostShowPresenter extends BasePresenter
 			$this->redirect('this');
 
 		};
-		return new CommentFormControl($successCallback, $this->getParameter('postId'), $this->database);
+		$postId = $this->getParameter('postId');
+
+		return $this->commentFormControlFactory->create($successCallback, $postId, $this->database);
 	}
 
 }

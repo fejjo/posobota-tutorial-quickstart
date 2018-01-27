@@ -13,12 +13,18 @@ class CommentFormControl extends Control
 	 */
 	private $database;
 	private $postId;
+
+	/**
+	 * @var callable
+	 */
 	private $successCallback;
 
-	public function __construct($successCallback, $postId, Context $database)
+
+	public function __construct(callable $successCallback, $postId, Context $database)
 	{
 		$this->database = $database;
 		$this->postId = $postId;
+
 		$this->successCallback = $successCallback;
 	}
 

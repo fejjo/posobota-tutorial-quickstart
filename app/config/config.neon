@@ -23,3 +23,4 @@ security:
 
 services:
 	router: App\RouterFactory::createRouter
+	- App\Components\CommentFormControlFactory
