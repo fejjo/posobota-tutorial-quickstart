@@ -1,0 +1,13 @@
+version: '3'
+services:
+    mysqldb:
+        image: mysql
+        restart: always
+        ports:
+            - "3308:3306"
+        volumes:
+            - "./docker/mysql/data:/var/lib/mysql"
+            - "./docker/mysql/conf.d:/etc/mysql/conf.d"
+        environment:
+            - MYSQL_DATABASE=tutorial
+            - MYSQL_ROOT_PASSWORD=tutorial
