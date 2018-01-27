@@ -52,7 +52,7 @@ class CommentFormControl extends Control
 			'content' => $values->content,
 		]);
 
-		$this->flashMessage('Thank you for your comment', 'success');
+		$this->presenter->flashMessage('Thank you for your comment', 'success');
 		$this->redirect('this');
 	}
 
