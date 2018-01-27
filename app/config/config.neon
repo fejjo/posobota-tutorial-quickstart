@@ -21,6 +21,5 @@ security:
 	users:
 		admin: secret  # user 'admin', password 'secret'
 
-
 services:
 	router: App\RouterFactory::createRouter

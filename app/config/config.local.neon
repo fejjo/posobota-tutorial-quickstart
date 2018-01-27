@@ -8,3 +8,5 @@ database:
 	options:
 		lazy: yes
 
+migrations:
+	withDummyData: true
