@@ -4,7 +4,6 @@ namespace App\Presenters;
 
 use App\Components\CommentFormControl;
 use Nette;
-use Nette\Application\UI\Form;
 
 class PostShowPresenter extends BasePresenter
 {
@@ -31,7 +30,12 @@ class PostShowPresenter extends BasePresenter
 
 	protected function createComponentCommentForm()
 	{
-		return new CommentFormControl($this->getParameter('postId'), $this->database);
+		$successCallback = function () {
+			$this->flashMessage('Thank you for your comment', 'success');
+			$this->redirect('this');
+
+		};
+		return new CommentFormControl($successCallback, $this->getParameter('postId'), $this->database);
 	}
 
 }

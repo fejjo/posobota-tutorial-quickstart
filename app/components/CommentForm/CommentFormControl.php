@@ -13,11 +13,13 @@ class CommentFormControl extends Control
 	 */
 	private $database;
 	private $postId;
+	private $successCallback;
 
-	public function __construct($postId, Context $database)
+	public function __construct($successCallback, $postId, Context $database)
 	{
 		$this->database = $database;
 		$this->postId = $postId;
+		$this->successCallback = $successCallback;
 	}
 
 	public function render()
@@ -52,8 +54,7 @@ class CommentFormControl extends Control
 			'content' => $values->content,
 		]);
 
-		$this->presenter->flashMessage('Thank you for your comment', 'success');
-		$this->redirect('this');
+		($this->successCallback)($this);
 	}
 
 }
