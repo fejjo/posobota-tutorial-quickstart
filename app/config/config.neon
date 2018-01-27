@@ -1,15 +1,21 @@
 parameters:
 
-
 application:
 	errorPresenter: Error
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
+extensions:
+	console: Contributte\Console\DI\ConsoleExtension
+	migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
 
 session:
 	expiration: 14 days
 
+migrations:
+	dir: %appDir%/../migrations
+	driver: mysql
+	dbal: nette
 
 security:
 	users:
