@@ -3,11 +3,9 @@
 namespace App\Presenters;
 
 use Nette;
-use Nette\Application\Helpers;
 use Nette\Application\UI\Form;
-use Nette\Application\UI\Presenter;
 
-class PostShowPresenter extends Presenter
+class PostShowPresenter extends BasePresenter
 {
 	/** @var Nette\Database\Context */
 	private $database;
@@ -18,13 +16,6 @@ class PostShowPresenter extends Presenter
 		$this->database = $database;
 	}
 
-	public function formatTemplateFiles()
-	{
-		list(, $presenter) = Helpers::splitName($this->getName());
-		return [__DIR__.'/'.$presenter.'.latte'];
-		//return parent::formatTemplateFiles();
-
-	}
 
 	public function renderDefault($postId)
 	{
