@@ -2,8 +2,11 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=127.0.0.1;dbname=test'
-	user:
-	password:
+	dsn: 'mysql:host=127.0.0.1;dbname=tutorial;port=3308'
+	user: root
+	password: tutorial
 	options:
 		lazy: yes
+
+extensions:
+    console: Contributte\Console\DI\ConsoleExtension
